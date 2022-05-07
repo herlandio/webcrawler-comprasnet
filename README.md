@@ -16,4 +16,6 @@
 
   `php crawler.php`
   
-- Após a execução do script ira gerar uma planilha excel com todas as informações exportadas, a planilha estará na pasta src
+- Após a execução do script ira gerar uma planilha excel com todas as informações exportadas 
+
+  - A planilha estará na pasta src
