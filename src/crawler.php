@@ -28,8 +28,7 @@ class WebCrawler {
      */
     public function getPages($pageInt) {
         $totalPerPage = 0;
-        $pageInt = ($pageInt === 1) ? 0 : $pageInt;
-        for($i = 1; $i <= (($pageInt === 0) ? 1 : $pageInt); $i++) {
+        for($i = 1; $i <= $pageInt; $i++) {
             $response = $this->httpClient->get("https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias?b_start:int={$totalPerPage}");
             $html = (string) $response->getBody();
             libxml_use_internal_errors(true);
