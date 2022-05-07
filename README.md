@@ -19,3 +19,5 @@
 - Após a execução do script ira gerar uma planilha excel com todas as informações exportadas 
 
   - A planilha estará na pasta src
+
+- OBS: a extenção extension=gd2 ou extension=gd deve estar habilitada no php.ini.
