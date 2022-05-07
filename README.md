@@ -1,4 +1,4 @@
-# Web Crawler para extração de dados da pagina [https://www.gov.br/compras/pt-br](https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias)
+# Web Crawler para extração de dados da pagina [ComprasNet](https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias)
 
 - Clone o projeto
 
