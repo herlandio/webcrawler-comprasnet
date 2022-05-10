@@ -31,7 +31,6 @@ class WebCrawler {
      * @param $pageInt :: Numero de paginas
      */
     public function getPages($pageInt) {
-        $newData = [];
         $totalPerPage = 0;
         for($i = 1; $i <= $pageInt; $i++) {
             $response = $this->httpClient->get("https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias?b_start:int={$totalPerPage}");
@@ -40,10 +39,10 @@ class WebCrawler {
             $page = new DOMDocument();
             $page->loadHTML($html);
             $this->xpath = new DOMXPath($page); 
-            $newData = $this->getArrayOfInfos();
+            $this->getArrayOfInfos();
             $totalPerPage += 30;
         }
-        $this->saveExcel($newData);
+        return $this->data;
     }
 
     /**
@@ -87,4 +86,5 @@ class WebCrawler {
     }
 }
 
-(new WebCrawler())->getPages(5);
+$WebCrawler = new WebCrawler();
+$WebCrawler->saveExcel($WebCrawler->getPages(5));
