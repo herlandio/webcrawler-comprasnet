@@ -2,7 +2,7 @@
     "name": "herlandio/webcrawler",
     "autoload": {
         "psr-4": {
-            "Herlandio\\Webcrawler\\": "src/"
+            "src\\": "src/"
         }
     },
     "authors": [
@@ -13,7 +13,9 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "^7.4",
-        "composer/ca-bundle": "^1.3",
         "phpoffice/phpspreadsheet": "^1.23"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9"
     }
 }
