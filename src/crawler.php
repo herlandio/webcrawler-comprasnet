@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Writer\Csv;
 
 class WebCrawler {
 
@@ -74,8 +74,13 @@ class WebCrawler {
         $sheet->setCellValue('B1', 'Dia');
         $sheet->setCellValue('D1', 'Link');
         $sheet->fromArray($data, null, 'A2');
-        $writer = new Xlsx($spreadsheet);
-        $writer->save('planilha.xlsx');
+        $writer = new Csv($spreadsheet);
+        $writer->setUseBOM(true);
+        $writer->setDelimiter(';');
+        $writer->setEnclosure('"');
+        $writer->setLineEnding("\r\n");
+        $writer->setSheetIndex(0);
+        $writer->save("planilha.csv");
     }
 }
 
