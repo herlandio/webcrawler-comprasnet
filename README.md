@@ -6,7 +6,7 @@
   git clone https://github.com/herlandio/webCrawler
   ```
   
-- Instale as dependências utilizando
+- Acesse a pasta Web-Crawler-ComprasNet/ e Instale as dependências utilizando o comando abaixo
 
   ```
   composer install
