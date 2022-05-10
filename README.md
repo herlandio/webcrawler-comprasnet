@@ -18,7 +18,7 @@
   (new WebCrawler())->getPages(5);
   ```
   
-- Para executar o script acesse src/crawler.php e execute em linha de comando CMD ou Terminal
+- Para executar o script acesse a pasta src/ e execute em linha de comando CMD ou Terminal
 
   ```
   php crawler.php
