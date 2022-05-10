@@ -13,7 +13,7 @@ class WebCrawler {
 
     private $httpClient;
     private $xpath;
-    private $data;
+    private $data = [];
     
     /**
      * Inicia Guzzle
