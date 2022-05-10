@@ -3,7 +3,7 @@
 - Clone o projeto
 
   ```
-  git clone https://github.com/herlandio/webCrawler
+  git clone https://github.com/herlandio/Web-Crawler-ComprasNet.git
   ```
   
 - Acesse a pasta Web-Crawler-ComprasNet/ e Instale as dependências utilizando o comando abaixo
