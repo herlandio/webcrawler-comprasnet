@@ -12,16 +12,16 @@
   composer install
   ```
   
-- No arquivo src/crawler.php basta definir de quantas paginas serão extraidas as informações
+- No arquivo forseti-code-challenge/src/crawler.php basta definir de quantas paginas serão extraidas as informações
 
   ```
   (new WebCrawler())->getPages(5);
   ```
   
-- Para executar o script acesse a pasta src/ e execute em linha de comando CMD ou Terminal
+- Para executar o script acesse a pasta forseti-code-challenge/ e execute no terminal
 
   ```
-  php crawler.php
+  php src/crawler.php
   ```
   
 - Após a execução do script ira gerar uma planilha excel com todas as informações exportadas 
