@@ -45,12 +45,12 @@ class WebCrawler {
      */
     public function getArrayOfInfos() {
         
-        $titles = $this->xpath->evaluate('//article[@class="tileItem visualIEFloatFix tile-collective-nitf-content"]//div[@class="tileContent"]//h2[@class="tileHeadline"]/a');
-        $links  = $this->xpath->evaluate('//article[@class="tileItem visualIEFloatFix tile-collective-nitf-content"]//div[@class="tileContent"]//h2[@class="tileHeadline"]//a/@href');
-        $day    = $this->xpath->evaluate('//article[@class="tileItem visualIEFloatFix tile-collective-nitf-content"]//span[@class="documentByLine"]//span[@class="summary-view-icon"]//i[@class="icon-day"]');
-        $hour   = $this->xpath->evaluate('//article[@class="tileItem visualIEFloatFix tile-collective-nitf-content"]//span[@class="documentByLine"]//span[@class="summary-view-icon"]//i[@class="icon-hour"]');
+        $titles = $this->xpath->evaluate('//article//div//h2//a');
+        $links  = $this->xpath->evaluate('//article//div//h2//a/@href');
+        $day    = $this->xpath->evaluate('//article//span//span//i[@class="icon-day"]');
+        $hour   = $this->xpath->evaluate('//article//span//span//i[@class="icon-hour"]');
 
-        for($i = 0; $i < $titles->length; $i++) {
+        for($i = 0; $i < 30; $i++) {
             array_push($this->data, [
                 'title' => $titles[$i]->textContent,
                 'day'   => trim($day[$i]->parentNode->nodeValue),
