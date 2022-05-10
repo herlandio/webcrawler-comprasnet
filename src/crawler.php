@@ -13,6 +13,7 @@ class WebCrawler {
 
     private $httpClient;
     private $xpath;
+    private $data;
     
     /**
      * Inicia Guzzle
@@ -49,20 +50,19 @@ class WebCrawler {
      * Realiza extração de dados
      */
     public function getArrayOfInfos() {
-        $data = [];
         $titles = $this->xpath->evaluate('//article//div//h2//a');
         $links  = $this->xpath->evaluate('//article//div//h2//a/@href');
         $days    = $this->xpath->evaluate('//article//span//span//i[@class="icon-day"]');
         $hours   = $this->xpath->evaluate('//article//span//span//i[@class="icon-hour"]');
         for($i = 0; $i < 30; $i++) {
-            array_push($data, [
+            array_push($this->data, [
                 'title' => $titles[$i]->textContent,
                 'day'   => trim($days[$i]->parentNode->nodeValue),
                 'hour'  => trim($hours[$i]->parentNode->nodeValue),
                 'link'  => $links[$i]->textContent,
             ]);
         }
-        return $data;
+        return $this->data;
     }
 
     /**
