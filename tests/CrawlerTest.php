@@ -14,10 +14,9 @@ final class CrawlerTest extends TestCase {
         $this->assertIsArray($instance->getArrayOfInfos());
     }
 
-    public function testQuantity(): void {
+    public function testCount(): void {
         $instance = new WebCrawler();
-        $instance->getPages(4);
-        $this->assertEquals(150, count($instance->getArrayOfInfos()));
+        $this->assertEquals(150, count($instance->getPages(5)));
     }
 
 }
