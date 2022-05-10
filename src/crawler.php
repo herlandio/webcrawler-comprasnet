@@ -13,7 +13,7 @@ class WebCrawler {
 
     private $httpClient;
     private $xpath;
-
+    
     /**
      * Inicia Guzzle
      */
@@ -30,7 +30,7 @@ class WebCrawler {
      * @param $pageInt :: Numero de paginas
      */
     public function getPages($pageInt) {
-        $data = [];
+        $newData = [];
         $totalPerPage = 0;
         for($i = 1; $i <= $pageInt; $i++) {
             $response = $this->httpClient->get("https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias?b_start:int={$totalPerPage}");
@@ -39,10 +39,10 @@ class WebCrawler {
             $page = new DOMDocument();
             $page->loadHTML($html);
             $this->xpath = new DOMXPath($page); 
-            $data = $this->getArrayOfInfos();
+            $newData = $this->getArrayOfInfos();
             $totalPerPage += 30;
         }
-        $this->saveExcel($data);
+        $this->saveExcel($newData);
     }
 
     /**
