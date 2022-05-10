@@ -6,7 +6,7 @@
   git clone https://github.com/herlandio/forseti-code-challenge
   ```
   
-- Acesse a pasta Web-Crawler-ComprasNet/ e Instale as dependências utilizando o comando abaixo
+- Acesse a pasta forseti-code-challenge/ e Instale as dependências utilizando o comando abaixo
 
   ```
   composer install
@@ -28,4 +28,10 @@
 
   - A planilha estará na pasta src
 
+- Para testes acesse a pasta forseti-code-challenge/ e execute
+
+  ```
+  ./vendor/bin/phpunit tests
+  ```
+  
 - OBS: a extenção extension=gd2 ou extension=gd deve estar habilitada no php.ini.
