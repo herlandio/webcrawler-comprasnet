@@ -1,5 +1,9 @@
 <?php
 
+/**
+* Ao utilizar o código deixar os créditos, livre para distribuição e utilização.
+*/
+
 require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
