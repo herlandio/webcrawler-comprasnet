@@ -13,7 +13,6 @@ class WebCrawler {
 
     private $httpClient;
     private $xpath;
-    private $data = [];
 
     /**
      * Inicia Guzzle
@@ -31,6 +30,7 @@ class WebCrawler {
      * @param $pageInt :: Numero de paginas
      */
     public function getPages($pageInt) {
+        $data = [];
         $totalPerPage = 0;
         for($i = 1; $i <= $pageInt; $i++) {
             $response = $this->httpClient->get("https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias?b_start:int={$totalPerPage}");
@@ -39,31 +39,30 @@ class WebCrawler {
             $page = new DOMDocument();
             $page->loadHTML($html);
             $this->xpath = new DOMXPath($page); 
-            $this->saveExcel($this->getArrayOfInfos());
+            $data = $this->getArrayOfInfos();
             $totalPerPage += 30;
-        }  
+        }
+        $this->saveExcel($data);
     }
 
     /**
      * Realiza extração de dados
      */
     public function getArrayOfInfos() {
-        
+        $data = [];
         $titles = $this->xpath->evaluate('//article//div//h2//a');
         $links  = $this->xpath->evaluate('//article//div//h2//a/@href');
-        $day    = $this->xpath->evaluate('//article//span//span//i[@class="icon-day"]');
-        $hour   = $this->xpath->evaluate('//article//span//span//i[@class="icon-hour"]');
-
+        $days    = $this->xpath->evaluate('//article//span//span//i[@class="icon-day"]');
+        $hours   = $this->xpath->evaluate('//article//span//span//i[@class="icon-hour"]');
         for($i = 0; $i < 30; $i++) {
-            array_push($this->data, [
+            array_push($data, [
                 'title' => $titles[$i]->textContent,
-                'day'   => trim($day[$i]->parentNode->nodeValue),
-                'hour'  => trim($hour[$i]->parentNode->nodeValue),
+                'day'   => trim($days[$i]->parentNode->nodeValue),
+                'hour'  => trim($hours[$i]->parentNode->nodeValue),
                 'link'  => $links[$i]->textContent,
             ]);
         }
-        
-        return $this->data;
+        return $data;
     }
 
     /**
