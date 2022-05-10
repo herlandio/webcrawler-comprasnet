@@ -15,7 +15,8 @@
 - No arquivo forseti-code-challenge/src/crawler.php basta definir de quantas paginas serão extraidas as informações
 
   ```
-  (new WebCrawler())->getPages(5);
+  $WebCrawler = new WebCrawler();
+  $WebCrawler->saveExcel($WebCrawler->getPages(5));
   ```
   
 - Para executar o script acesse a pasta forseti-code-challenge/ e execute no terminal
