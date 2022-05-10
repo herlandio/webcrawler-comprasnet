@@ -26,7 +26,7 @@
   
 - Após a execução do script ira gerar uma planilha excel com todas as informações exportadas 
 
-  - A planilha estará na pasta src
+  - A planilha estará na pasta forseti-code-challenge/
 
 - Para testes acesse a pasta forseti-code-challenge/ e execute
 
