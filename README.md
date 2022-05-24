@@ -3,23 +3,23 @@
 - Clone o projeto
 
   ```
-  git clone https://github.com/herlandio/forseti-code-challenge
+  git clone https://github.com/herlandio/webcrawler-comprasnet
   ```
   
-- Acesse a pasta forseti-code-challenge/ e Instale as dependências utilizando o comando abaixo
+- Acesse a pasta webcrawler-comprasnet/ e Instale as dependências utilizando o comando abaixo
 
   ```
   composer install
   ```
   
-- No arquivo forseti-code-challenge/src/crawler.php basta definir de quantas paginas serão extraidas as informações
+- No arquivo webcrawler-comprasnet/src/crawler.php basta definir de quantas paginas serão extraidas as informações
 
   ```
   $WebCrawler = new WebCrawler();
   $WebCrawler->saveExcel($WebCrawler->getPages(5));
   ```
   
-- Para executar o script acesse a pasta forseti-code-challenge/ e execute no terminal
+- Para executar o script acesse a pasta webcrawler-comprasnet/ e execute no terminal
 
   ```
   php src/crawler.php
@@ -27,9 +27,9 @@
   
 - Após a execução do script ira gerar uma planilha excel com todas as informações exportadas 
 
-  - A planilha estará na pasta forseti-code-challenge/
+  - A planilha estará na pasta webcrawler-comprasnet/
 
-- Para testes acesse a pasta forseti-code-challenge/ e execute
+- Para testes acesse a pasta webcrawler-comprasnet/ e execute
 
   ```
   ./vendor/bin/phpunit tests
