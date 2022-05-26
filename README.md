@@ -6,10 +6,34 @@
   git clone https://github.com/herlandio/webcrawler-comprasnet
   ```
   
-- Acesse a pasta webcrawler-comprasnet/ e Instale as dependências utilizando o comando abaixo
+- Acesse a pasta webcrawler-comprasnet/ e execute os comandos um por vez
 
   ```
-  composer install
+  Cria a imagem docker
+  $ docker build -t webcrawler:v1 .
+
+  Inicia a imagem
+  $ docker run -it -d webcrawler:v1
+
+  Execute este comando para ver o CONTAINER ID da imagem
+  $ docker ps
+
+  OBS: substitua o CONTAINER ID pelo encontrado atraves do comando acima.
+
+  Executa script webcrawler, dentro de alguns segundos ira gerar a planilha.csv
+  $ docker exec -it CONTAINER_ID php src/crawler.php
+
+  Executa os testes
+  $ docker exec -it CONTAINER_ID ./vendor/bin/phpunit tests
+
+  Acessa o bash do container
+  $ docker exec -it CONTAINER_ID bash
+
+  Lista o conteudo, a planilha gerada estará aqui
+  $ ls
+
+  Sai do bash do container
+  $ exit
   ```
   
 - No arquivo webcrawler-comprasnet/src/crawler.php basta definir de quantas paginas serão extraidas as informações
@@ -18,21 +42,3 @@
   $WebCrawler = new WebCrawler();
   $WebCrawler->saveExcel($WebCrawler->getPages(5));
   ```
-  
-- Para executar o script acesse a pasta webcrawler-comprasnet/ e execute no terminal
-
-  ```
-  php src/crawler.php
-  ```
-  
-- Após a execução do script ira gerar uma planilha excel com todas as informações exportadas 
-
-  - A planilha estará na pasta webcrawler-comprasnet/
-
-- Para testes acesse a pasta webcrawler-comprasnet/ e execute
-
-  ```
-  ./vendor/bin/phpunit tests
-  ```
-  
-- OBS: a extenção extension=gd2 ou extension=gd deve estar habilitada no php.ini.
