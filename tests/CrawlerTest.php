@@ -8,15 +8,19 @@ use PHPUnit\Framework\TestCase;
 
 final class CrawlerTest extends TestCase {
 
+    private WebCrawler $instance;
+    
+    protected function setUp() {
+        $this->instance = new WebCrawler();
+    }
+    
     public function testArrayOfInfos(): void {
-        $instance = new WebCrawler();
-        $instance->getPages(5);
-        $this->assertIsArray($instance->getArrayOfInfos());
+        $this->instance->getPages(5);
+        $this->assertIsArray($this->instance->getArrayOfInfos());
     }
 
     public function testCount(): void {
-        $instance = new WebCrawler();
-        $this->assertEquals(150, count($instance->getPages(5)));
+        $this->assertEquals(150, count($this->instance->getPages(5)));
     }
 
 }
