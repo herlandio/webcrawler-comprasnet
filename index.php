@@ -17,7 +17,7 @@ try {
     $webCrawler = new WebCrawler();
     $data = $webCrawler->getPages(5);
     $webCrawler->saveData($data);
-    echo "Dados extraídos e salvos com sucesso!";
+    echo "Dados extraídos e salvos com sucesso!" . PHP_EOL;
 } catch (\Exception $e) {
     echo "Ocorreu um erro: " . $e->getMessage();
 }

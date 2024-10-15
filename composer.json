@@ -1,16 +1,16 @@
 {
     "name": "herlandio/webcrawler",
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "herlandio",
             "email": "herlandio7@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
     "require": {
         "guzzlehttp/guzzle": "^7.4",
         "phpoffice/phpspreadsheet": "^1.23"

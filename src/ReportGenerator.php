@@ -88,6 +88,11 @@ class ReportGenerator {
         $this->writer->setEnclosure('"');
         $this->writer->setLineEnding("\r\n");
         $this->writer->setSheetIndex(0);
-        $this->writer->save("{$this->outputDir}/spreadsheet.csv");
+
+        $filePath = "{$this->outputDir}/spreadsheet.csv";
+        
+        $this->writer->save($filePath);
+        
+        file_put_contents($filePath, "\r\n", FILE_APPEND);
     }
 }

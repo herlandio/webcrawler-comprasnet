@@ -12,8 +12,6 @@
  namespace App\Tests;
 
  use App\ReportGenerator;
- use PhpOffice\PhpSpreadsheet\Writer\Csv;
- use PhpOffice\PhpSpreadsheet\Spreadsheet;
  use PHPUnit\Framework\TestCase;
 
 class ReportGeneratorTest extends TestCase
@@ -112,6 +110,33 @@ class ReportGeneratorTest extends TestCase
         $this->assertEquals('Day 1', $sheet->getCell('B2')->getValue());
         $this->assertEquals('10:00 AM', $sheet->getCell('C2')->getValue());
         $this->assertEquals('http://example.com/article1', $sheet->getCell('D2')->getValue());
+    }
+
+    /**
+     * Test case for the saveExcel method.
+     *
+     * This test verifies that the ReportGenerator correctly saves data into a CSV file.
+     * It mocks the Csv writer and ensures that the output is saved as expected.
+     */
+    public function testSaveExcelSavesCsvFile(): void {
+        $data = [
+            ['Title 1', 'Monday', '10:00 AM', 'http://example.com/1'],
+            ['Title 2', 'Tuesday', '11:00 AM', 'http://example.com/2']
+        ];
+    
+        $reflection = new \ReflectionClass($this->reportGenerator);
+        $method = $reflection->getMethod('ensureOutputDirectoryExists');
+        $method->setAccessible(true);
+
+        $method->invoke($this->reportGenerator);
+        $this->assertTrue(is_dir('/app/output'));
+
+        $this->reportGenerator->saveExcel($data);
+        $this->assertFileExists("{$this->outputDir}/spreadsheet.csv");
+
+        $contents = file_get_contents("{$this->outputDir}/spreadsheet.csv");
+        $actualContent = file_get_contents('/app/output/spreadsheet.csv');
+        $this->assertEquals($contents, $actualContent);
     }
 
     /**
