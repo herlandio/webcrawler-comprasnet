@@ -1,21 +1,21 @@
-FROM php
+FROM php:7.3-cli
 
-RUN apt-get update -y && apt-get install -y libpng-dev
-
-RUN apt-get update && \
-    apt-get install -y \
-        zlib1g-dev \
-        libzip-dev \
-        zip
-
-RUN docker-php-ext-install zip
-
-RUN docker-php-ext-install gd
+RUN apt-get update -y && \
+    apt-get install -y libpng-dev zlib1g-dev libzip-dev zip git && \
+    docker-php-ext-install zip gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /app
 
+COPY composer.json ./
+
+RUN composer update --no-dev --optimize-autoloader
+
+RUN composer require --dev phpunit/phpunit:^9.5
+
 COPY . .
 
-RUN composer install --ignore-platform-reqs
+RUN chmod +x vendor/bin/phpunit
+
+CMD ["php", "index.php"]

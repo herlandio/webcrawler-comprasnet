@@ -9,42 +9,13 @@
 - Acesse a pasta webcrawler-comprasnet/ e execute os comandos um por vez
 - Cria a imagem docker
   ```
-  $ docker build -t webcrawler:v1 .
+  $ docker build -t webcrawler .
   ```
-  Inicia a imagem
+  Salva os dados em um arquivo excel na pasta output. Certifique-se de que essa pasta exista; caso a mesma não seja criada automaticamente.
   ```
-  $ docker run -it -d webcrawler:v1
-  ```
-  Execute este comando para ver o CONTAINER ID da imagem
-  ```
-  $ docker ps
-  ```
-  OBS: substitua o ```CONTAINER ID``` pelo encontrado atraves do comando acima.
-
-  Executa script webcrawler, dentro de alguns segundos ira gerar a planilha.csv
-  ```
-  $ docker exec -it CONTAINER_ID php src/crawler.php
+  $ docker run --rm -v "$(pwd)/output:/app/output" webcrawler
   ```
   Executa os testes
   ```
-  $ docker exec -it CONTAINER_ID ./vendor/bin/phpunit tests
-  ```
-  Acessa o bash do container
-  ```
-  $ docker exec -it CONTAINER_ID bash
-  ```
-  Lista o conteudo, a planilha gerada estará aqui
-  ```
-  $ ls  
-  ```
-  Para sair do bash do container
-  ```
-  $ exit
-  ```
-  
-- No arquivo webcrawler-comprasnet/src/crawler.php basta definir de quantas paginas serão extraidas as informações
-
-  ```
-  $WebCrawler = new WebCrawler();
-  $WebCrawler->saveExcel($WebCrawler->getPages(5));
+  $ docker run --rm -it webcrawler ./vendor/bin/phpunit tests
   ```
