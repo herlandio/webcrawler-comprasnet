@@ -24,7 +24,7 @@ class ReportGenerator {
     /**
      * @var string The directory where the CSV report will be saved.
      */
-    private $outputDir = '/app/output';
+    private $outputDir = DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'output'.DIRECTORY_SEPARATOR;
   
     /**
      * @var Csv The writer used for saving the CSV.
@@ -89,7 +89,7 @@ class ReportGenerator {
         $this->writer->setLineEnding("\r\n");
         $this->writer->setSheetIndex(0);
 
-        $filePath = "{$this->outputDir}/spreadsheet.csv";
+        $filePath = "{$this->outputDir}spreadsheet.csv";
         
         $this->writer->save($filePath);
         
