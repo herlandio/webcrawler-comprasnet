@@ -24,19 +24,19 @@ class ReportGenerator {
     /**
      * @var string The directory where the CSV report will be saved.
      */
-    private $outputDir = DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'output'.DIRECTORY_SEPARATOR;
+    private string $outputDir = DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'output'.DIRECTORY_SEPARATOR;
   
     /**
-     * @var Csv The writer used for saving the CSV.
+     * @var ?Csv The writer used for saving the CSV.
      */
-    private $writer;
+    private ?Csv $writer;
 
     /**
      * ReportGenerator constructor.
      *
-     * @param Csv|null $writer Optional writer for dependency injection (for testing).
+     * @param ?Csv|null $writer Optional writer for dependency injection (for testing).
      */
-    public function __construct(Csv $writer = null) {
+    public function __construct(?Csv $writer = null) {
         $this->writer = $writer; // Allow dependency injection
     }
 

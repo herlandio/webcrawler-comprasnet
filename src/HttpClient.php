@@ -23,7 +23,7 @@ class HttpClient {
     /**
      * @var Client The Guzzle HTTP client instance.
      */
-    protected $client;
+    protected Client $client;
 
     /**
      * HttpClient constructor.

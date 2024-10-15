@@ -21,12 +21,12 @@ class DataExtractor {
     /**
      * @var \DOMXPath The DOMXPath object used to query the HTML document.
      */
-    private $xpath;
+    private \DOMXPath $xpath;
 
     /**
      * @var array The array where the extracted data will be stored.
      */
-    private $data = [];
+    private array $data = [];
 
     /**
      * DataExtractor constructor.

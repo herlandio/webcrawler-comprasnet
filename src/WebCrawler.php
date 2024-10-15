@@ -21,12 +21,12 @@ class WebCrawler {
     /**
      * @var HttpClient
      */
-    private $httpClient;
+    private HttpClient $httpClient;
 
     /**
      * @var ReportGenerator
      */
-    private $reportGenerator;
+    private ReportGenerator $reportGenerator;
 
     /**
      * Constructor of the WebCrawler class.

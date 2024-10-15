@@ -19,14 +19,14 @@ use App\HttpClient;
 class HttpClientTest extends TestCase
 {
     /**
-     * @var HttpClient
+     * @var ?HttpClient
      */
-    private $httpClient;
+    private ?HttpClient $httpClient;
 
     /**
-     * @var Client|\PHPUnit\Framework\MockObject\MockObject
+     * @var ?Client
      */
-    private $mockClient;
+    private ?Client $mockClient;
 
     /**
      * Set up the test environment before each test.
@@ -44,7 +44,7 @@ class HttpClientTest extends TestCase
     /**
      * Test that the GET request method returns the expected response.
      */
-    public function testGetRequestReturnsResponseBody()
+    public function testGetRequestReturnsResponseBody(): void
     {
         $url = 'http://example.com';
         $expectedBody = 'Sample response';

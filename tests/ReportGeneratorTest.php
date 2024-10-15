@@ -17,9 +17,9 @@
 class ReportGeneratorTest extends TestCase
 {
     /**
-     * @var ReportGenerator
+     * @var ?ReportGenerator
      */
-    private $reportGenerator;
+    private ?ReportGenerator $reportGenerator;
 
     /**
      * Set up the test environment before each test.

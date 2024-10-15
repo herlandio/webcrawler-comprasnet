@@ -17,16 +17,16 @@ use App\DataExtractor;
 class DataExtractorTest extends TestCase
 {
     /**
-     * @var DataExtractor
+     * @var ?DataExtractor
      */
-    private $extractor;
+    private ?DataExtractor $extractor;
 
     /**
      * Sample HTML to simulate a web page content.
      *
      * @var string
      */
-    private $html;
+    private string $html;
 
     /**
      * Set up before each test.

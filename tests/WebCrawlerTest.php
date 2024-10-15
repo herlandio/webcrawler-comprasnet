@@ -20,9 +20,9 @@ use App\ReportGenerator;
 class WebCrawlerTest extends TestCase {
 
     /**
-     * @var WebCrawler
+     * @var ?WebCrawler
      */
-    private $webCrawler;
+    private ?WebCrawler $webCrawler;
 
     /**
      * @inheritDoc

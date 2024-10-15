@@ -1,8 +1,8 @@
-FROM php:7.3-cli
+FROM php:7.4-alpine
 
-RUN apt-get update -y && \
-    apt-get install -y libpng-dev zlib1g-dev libzip-dev zip git && \
-    docker-php-ext-install zip gd
+RUN apk add --no-cache libpng-dev zlib-dev libzip-dev zip git
+
+RUN docker-php-ext-install zip gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -12,7 +12,7 @@ COPY composer.json ./
 
 RUN composer update --no-dev --optimize-autoloader
 
-RUN composer require --dev phpunit/phpunit:^9.5
+RUN composer require --dev phpunit/phpunit:^9
 
 COPY . .
 
